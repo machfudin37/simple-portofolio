@@ -14,9 +14,6 @@ class LayoutSystem {
       for (const marker of markers) {
         const componentName = marker.getAttribute("data-component");
         const response = await fetch(`pages/${componentName}.html`);
-        if (response.ok) {
-          marker.outerHTML = await response.text();
-        }
       }
     } catch (error) {
       console.error("Error loading components:", error);
