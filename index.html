@@ -1,478 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio TailwindCSS</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/output.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/output.css" />
     <script>
         // Pemeriksaan error pada kode asli:
-        if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
         } else {
-            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.remove("dark");
         }
+            //Loading Layout
+            document.addEventListener("DOMContentLoaded", () => {
+                // Temukan marker komponen
+                const markers = document.querySelectorAll("[data-component]");
+
+                markers.forEach(async (marker) => {
+                    const pagesName = marker.getAttribute("data-component");
+                    const response = await fetch(`pages/${pagesName}.html`);
+                    marker.outerHTML = await response.text();
+                });
+            });
     </script>
 </head>
 
 <body>
     <!-- Header Start -->
-    <header class="bg-transparent absolute top-0 lef-0 w-full flex items-center z-10">
-        <div class="container">
-            <div class="flex items-center justify-between relative">
-                <div class="px-4">
-                    <a href="#home" class="font-bold text-large text-blue-500 block py-6">Machfudin</a>
-                </div>
-                <div class="flex items-center px-4">
-                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-                        <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
-                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
-                        <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
-                    </button>
-                    <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-gray-900 dark:shadow-slate-500 lg:dark:bg-transparent">
-                        <ul class="block lg:flex">
-                            <li class="group">
-                                <a href="#home"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Beranda</a>
-                            </li>
-                            <li class="group">
-                                <a href="#about"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Tentang
-                                    Saya</a>
-                            </li>
-                            <li class="group">
-                                <a href="#portfolio"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Portfolio</a>
-                            </li>
-                            <li class="group">
-                                <a href="#client"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Client</a>
-                            </li>
-                            <li class="group">
-                                <a href="#blog"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Blog</a>
-                            </li>
-                            <li class="group">
-                                <a href="#contact"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Kontak</a>
-                            </li>
-                            <li class="mt-3 lg:mt-0 flex items-center pl-8">
-                                <div class="flex">
-                                    <span class="mr-2 text-sm text-slate-500">Light</span>
-                                    <input type="checkbox" id="dark-toggle" class="hidden">
-                                    <label for="dark-toggle">
-                                        <div
-                                            class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
-                                            <div
-                                                class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
-                                            </div>
-                                        </div>
-                                    </label>
-                                    <span class="ml-2 text-sm text-slate-500">Dark</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div data-component="header"></div>
     <!-- Header End -->
     <!-- Hero Section Start -->
-    <section id="home" class="pt-36 dark:bg-gray-900">
-        <div class="container">
-            <div class="flex flex-wrap">
-                <div class="w-full self-center px-4 lg:w-1/2">
-                    <h1 class="text-base font-semibold text-blue-500 md:text-xl lg:text-2xl">Halo Semua 👋, Saya<span
-                            class="block font-bold text-slate-900 text-4xl lg:text-5xl dark:text-white">Machfudin</span>
-                    </h1>
-                    <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-xl">Programmer</h2>
-                    <p class="font-medium text-slate-400 mb-10 leading-relaxed">Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Totam architecto tempora sit molestias similique ratione perferendis!</p>
-                    <a href="#"
-                        class="text-base font-semibold text-white bg-blue-500 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Download
-                        Resume</a>
-                </div>
-                <div class="w-full self-end px-4 lg:w-1/2">
-                    <div class="relative mt-10 lg:mt-9 lg:right-0">
-                        <img src="./assets/img/profile.png" alt="Machfudin" class="relative max-w-full mx-auto z-10">
-                        <span class="absolute -bottom-0 left-1/2 -translate-x-1/2 md:scale-110">
-                            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#0F62FE"
-                                    d="M56.3,-19.6C64.8,7.9,57.9,39,36.4,56.1C14.8,73.2,-21.3,76.2,-45.5,59.4C-69.6,42.6,-81.7,6.1,-72.1,-22.9C-62.6,-51.9,-31.3,-73.3,-3.7,-72.1C23.9,-70.9,47.8,-47.1,56.3,-19.6Z"
-                                    transform="translate(100 100) scale(1.2)" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div data-component="hero"></div>
     <!-- Hero Section End -->
     <!-- About Section Start -->
-    <section id="about" class="pt-36 pb-32">
-        <div class="container">
-            <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-10 lg:w-1/2">
-                    <h4 class="font-bold uppercase text-blue-500 text-lg mb-3">Tentang Saya</h4>
-                    <h2 class="font-bold text-slate-900 text-3xl mb-5 lg:text-4xl">Yuk, Belajar Web Programming</h2>
-                    <p class="font-medium text-base text-slate-500 max-w-xl lg:text-lg">Lorem ipsum dolor sit amet
-                        consectetur
-                        adipisicing
-                        elit. Deleniti reprehenderit sit delectus
-                        aperiam animi, consequatur blanditiis.</p>
-                </div>
-                <div class="w-full px-4 lg:w-1/2">
-                    <h3 class="font-semibold text-slate-900 text-2xl mb-4 lg:text-3xl lg:pt-10">Mari Berteman</h3>
-                    <p class="font-medium text-base text-slate-500 mb-6 lg:text-lg">Lorem ipsum dolor sit amet
-                        consectetur
-                        adipisicing
-                        elit. Facere consequuntur, ipsa unde cumque
-                        itaque velit eaque!</p>
-                    <div class="flex item-center">
-                        <!-- GitHub Icon -->
-                        <a href="https://github.com/machfudin37" target="_blank"
-                            class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-blue-500 hover:bg-blue-500 hover:text-white"><svg
-                                class="fill-current" width="20" role="img" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <title>GitHub</title>
-                                <path
-                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                            </svg></a>
-                        <!-- LinkedIn Icon -->
-                        <a href="#" target="_blank"
-                            class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-blue-500 hover:bg-blue-500 hover:text-white"><svg
-                                class="fill-current" width="20" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                                <path
-                                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div data-component="about"></div>
     <!-- About Section End -->
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-36 pb-16 bg-slate-100">
-        <div class="container">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-blue-500 mb-2 text-3xl mb-4">Portfolio
-                    </h4>
-                    <h2 class="font-bold text-slate-900 text-3xl mb-4 sm:text-4xl lg:text-5xl">Project Terbaru</h2>
-                    <p class="font-medium text-md text-slate-500 md:text-lg">Lorem ipsum dolor, sit amet consectetur
-                        adipisicing
-                        elit. Ipsam asperiores fuga minus velit
-                        nostrum consequuntur ullam!</p>
-                </div>
-            </div>
-            <div class="w-full px-4 flex flex-wrap justify-center">
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="assets/img/1.png" alt="Contoh1" width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-black mt-5 mb-3">Machfudin Contoh 1</h3>
-                    <p class="font-medium tetx-base text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Error ad commodi facere aliquam excepturi aspernatur unde!</p>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="assets/img/2.png" alt="Contoh2" width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-black mt-5 mb-3">Machfudin Contoh 2</h3>
-                    <p class="font-medium tetx-base text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Error ad commodi facere aliquam excepturi aspernatur unde!</p>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="assets/img/1.png" alt="Contoh3" width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-black mt-5 mb-3">Machfudin Contoh 3</h3>
-                    <p class="font-medium tetx-base text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Error ad commodi facere aliquam excepturi aspernatur unde!</p>
-                </div>
-                <div class="mb-12 p-4 md:w-1/2">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <img src="assets/img/4.png" alt="Contoh4" width="w-full">
-                    </div>
-                    <h3 class="font-semibold text-xl text-black mt-5 mb-3">Machfudin Contoh 4</h3>
-                    <p class="font-medium tetx-base text-slate-500">Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Error ad commodi facere aliquam excepturi aspernatur unde!</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <div data-component="portfolio"></div>
     <!-- Portfolio Section End -->
     <!-- Client Section Start -->
-    <section id="client" class="pt-36 pb-32 bg-slate-800">
-        <div class="container">
-            <div class="w-full px-4">
-                <div class=" mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-blue-300 mb-2">Client</h4>
-                    <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">Yang Pernah Bekerja Sama</h2>
-                    <p class="font-medium text-md text-slate-500 md:text-lg">Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit. Unde incidunt sint libero?</p>
-                </div>
-            </div>
-            <div class="w-full px-4 ">
-                <div class="flex flex-wrap items-center justify-center">
-                    <a href="#"
-                        class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8"><img
-                            src="assets/img/1.svg" alt="Contoh1">
-                    </a>
-                    <a href="#"
-                        class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8"><img
-                            src="assets/img/2.svg" alt="Contoh2">
-                    </a>
-                    <a href="#"
-                        class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8"><img
-                            src="assets/img/1.svg" alt="Contoh3">
-                    </a>
-                    <a href="#"
-                        class="max-w-[120px] mx-4 py-4 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100 lg:mx-6 xl:mx-8"><img
-                            src="assets/img/2.svg" alt="Contoh4">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div data-component="client"></div>
     <!-- Client Section End -->
     <!-- Blog Section Start -->
-    <section id="blog" class="pt-36 pb-32 bg-slate-100">
-        <div class="container">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-blue-500 mb-2 text-3xl mb-4">Blog
-                    </h4>
-                    <h2 class="font-bold text-slate-900 text-3xl mb-4 sm:text-4xl lg:text-5xl">Tulisan Terkini</h2>
-                    <p class="font-medium text-md text-slate-500 md:text-lg">Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Ipsa doloremque quasi officia delectus.</p>
-                </div>
-            </div>
-            <div class="flex flex-wrap">
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="assets/img/1.png" alt="ContohBlog1">
-                        <div class="py-8 px-6">
-                            <h3><a href="#"
-                                    class="block mb-3 font-semibold text-xl text-slate-900 hover:text-blue-500 truncate">Tips
-                                    Belajar</a>
-                            </h3>
-                            <p class="font-medium text-slate-400 mb-4">Lorem, ipsum dolor sit amet consectetur
-                                adipisicing
-                                elit. Quo, officiis.</p>
-                            <a href="#"
-                                class="font-medium text-sm bg-blue-500 text-white py-3 px-4 rounded-lg hover:opacity-80">Baca
-                                Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="assets/img/1.png" alt="ContohBlog1">
-                        <div class="py-8 px-6">
-                            <h3><a href="#"
-                                    class="block mb-3 font-semibold text-xl text-slate-900 hover:text-blue-500 truncate">Contoh
-                                    2</a>
-                            </h3>
-                            <p class="font-medium text-slate-400 mb-4">Lorem, ipsum dolor sit amet consectetur
-                                adipisicing
-                                elit. Quo, officiis.</p>
-                            <a href="#"
-                                class="font-medium text-sm bg-blue-500 text-white py-3 px-4 rounded-lg hover:opacity-80">Baca
-                                Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="assets/img/1.png" alt="ContohBlog1">
-                        <div class="py-8 px-6">
-                            <h3><a href="#"
-                                    class="block mb-3 font-semibold text-xl text-slate-900 hover:text-blue-500 truncate">Contoh
-                                    3</a>
-                            </h3>
-                            <p class="font-medium text-slate-400 mb-4">Lorem, ipsum dolor sit amet consectetur
-                                adipisicing
-                                elit. Quo, officiis.</p>
-                            <a href="#"
-                                class="font-medium text-sm bg-blue-500 text-white py-3 px-4 rounded-lg hover:opacity-80">Baca
-                                Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
-                        <img src="assets/img/1.png" alt="ContohBlog1">
-                        <div class="py-8 px-6">
-                            <h3><a href="#"
-                                    class="block mb-3 font-semibold text-xl text-slate-900 hover:text-blue-500 truncate">Contoh
-                                    4</a>
-                            </h3>
-                            <p class="font-medium text-slate-400 mb-4">Lorem, ipsum dolor sit amet consectetur
-                                adipisicing
-                                elit. Quo, officiis.</p>
-                            <a href="#"
-                                class="font-medium text-sm bg-blue-500 text-white py-3 px-4 rounded-lg hover:opacity-80">Baca
-                                Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div data-component="blog"></div>
     <!-- Blog Section End -->
     <!-- Contact Section Start -->
-    <section id="contact" class="pt-36 pb-32">
-        <div class="container">
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
-                    <h4 class="font-semibold text-lg text-blue-500 mb-2 text-3xl mb-4">Contact
-                    </h4>
-                    <h2 class="font-bold text-slate-900 text-3xl mb-4 sm:text-4xl lg:text-5xl">Hubungi Saya</h2>
-                    <p class="font-medium text-md text-slate-500 md:text-lg">Kamu dapat menghubungi saya dengan mengisi
-                        form dibawah ini</p>
-                </div>
-            </div>
-
-            <form action="#">
-                <div class="w-full lg:w-2/3 lg:mx-auto">
-                    <div class="w-full px-4 mb-8">
-                        <label for="name" class="text-base font-bold text-blue-500">Nama</label>
-                        <input type="text" id="name"
-                            class="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-1 focus:border-blue-500">
-                    </div>
-                    <div class="w-full px-4 mb-8">
-                        <label for="email" class="text-base font-bold text-blue-500">Email</label>
-                        <input type="email" id="email"
-                            class="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-1 focus:border-blue-500">
-                    </div>
-                    <div class="w-full px-4 mb-8">
-                        <label for="message" class="text-base font-bold text-blue-500">Pesan</label>
-                        <textarea type="text" id="message"
-                            class="w-full bg-slate-200 text-black p-3 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-1 focus:border-blue-500 h-32"></textarea>
-                    </div>
-                    <div class="w-full px-4">
-                        <button
-                            class="text-base font-semibold text-white bg-blue-500 py-3 px-8 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">Kirim</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
+    <div data-component="contact"></div>
     <!-- Contact Section End -->
     <!-- Footer Start -->
-    <footer class="bg-slate-900 pt-24 pb-12">
-        <div class="container">
-            <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-12 font-medium text-slate-300 md:w-1/3">
-                    <h2 class="font-bold text-4xl text-white mb-5">Tes</h2>
-                    <h3 class="font-bold text-2xl mb-2">Hubungi Saya</h3>
-                    <p>Machfudin</p>
-                    <p>Jalan Jalan Saja</p>
-                    <p>IKN</p>
-                </div>
-                <div class="w-full px-4 mb-12 md:w-1/3 text-slate-300">
-                    <h3 class="font-semibold text-xl text-white mb-5">Kategori Tulisan</h3>
-                    <ul>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Programming</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Teknologi</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Hardware</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Software</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-full px-4 mb-12 md:w-1/3 text-slate-300">
-                    <h3 class="font-semibold text-xl text-white mb-5">Tautan</h3>
-                    <ul>
-                        <li>
-                            <a href="#home" class="inline-block text-base hover:text-blue-500 mb-3">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="#about" class="inline-block text-base hover:text-blue-500 mb-3">Tentang Saya</a>
-                        </li>
-                        <li>
-                            <a href="#portfolio" class="inline-block text-base hover:text-blue-500 mb-3">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#client" class="inline-block text-base hover:text-blue-500 mb-3">Client</a>
-                        </li>
-                        <li>
-                            <a href="#blog" class="inline-block text-base hover:text-blue-500 mb-3">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#contact" class="inline-block text-base hover:text-blue-500 mb-3">Kontak</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-full px-4 mb-12 md:w-1/3 text-slate-300">
-                    <h3 class="font-semibold text-xl text-white mb-5">Kategori Tulisan</h3>
-                    <ul>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Programming</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Teknologi</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Hardware</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-blue-500 mb-3">Software</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="w-full pt-10 border-t border-slate-700">
-                <div class="flex item-center justify-center mb-5">
-                    <!-- GitHub Icon -->
-                    <a href="https://github.com/machfudin37" target="_blank"
-                        class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border text-slate-300 border-slate-400 hover:border-blue-500 hover:bg-blue-500 hover:text-white"><svg
-                            class="fill-current" width="20" role="img" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <title>GitHub</title>
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                        </svg></a>
-                    <!-- LinkedIn Icon -->
-                    <a href="#" target="_blank"
-                        class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border text-slate-300 border-slate-300 hover:border-blue-500 hover:bg-blue-500 hover:text-white"><svg
-                            class="fill-current" width="20" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-                            <path
-                                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                        </svg></a>
-                </div>
-                <p class="font-medium text-xs text-slate-500 text-center">Dibuat dengan <span
-                        class="text-pink-500">❤</span> oleh <a href="https://github.com/machfudin37" target="_blank"
-                        class="font-bold text-blue-500">Machfudin</a>,
-                    menggunakan <a href="https://tailwindcss.com" target="_blank"
-                        class="font-bold text-sky-500">Tailwind
-                        CSS</a></p>
-            </div>
-        </div>
-    </footer>
+    <div data-component="footer"></div>
     <!-- Footer End -->
-    <!-- Back to to Start -->
-    <a href="#home"
-        class="hover:animate-pulse fixed hidden justify-center items-center bottom-4 right-4 z-[9999] h-14 w-14 bg-blue-500 rounded-full p-4"
-        id="to-top">
-        <span class="block h-5 w-5 border-t-2 border-l-2 rotate-45 mt-2"></span>
-    </a>
-    <!-- Back to to End -->
+    <!-- Back to top Start -->
+    <div data-component="backtotop"></div>
+    <!-- Back to top End -->
     <script src="assets/js/main.js"></script>
 </body>
 
