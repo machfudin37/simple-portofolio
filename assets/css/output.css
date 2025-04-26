@@ -1315,6 +1315,11 @@ body {
   color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 
+.dark\:bg-blue-500:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
 .dark\:bg-gray-900:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
@@ -1325,9 +1330,9 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.dark\:shadow-slate-500:is(.dark *) {
-  --tw-shadow-color: #64748b;
-  --tw-shadow: var(--tw-shadow-colored);
+.dark\:text-blue-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 640px) {
