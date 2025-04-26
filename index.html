@@ -8,16 +8,6 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/output.css" />
     <script>
-        // Pemeriksaan error pada kode asli:
-            if (
-                localStorage.theme === "dark" ||
-                (!("theme" in localStorage) &&
-                    window.matchMedia("(prefers-color-scheme: dark)").matches)
-            ) {
-                document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
             //Loading Layout
             document.addEventListener("DOMContentLoaded", () => {
                 // Temukan marker komponen
@@ -29,10 +19,36 @@
                     marker.outerHTML = await response.text();
                 });
             });
+        // Pemeriksaan error pada kode asli:
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+<<<<<<< HEAD
+            //Loading Layout
+            document.addEventListener("DOMContentLoaded", () => {
+                // Temukan marker komponen
+                const markers = document.querySelectorAll("[data-component]");
+
+                markers.forEach(async (marker) => {
+                    const pagesName = marker.getAttribute("data-component");
+                    const response = await fetch(`pages/${pagesName}.html`);
+                    marker.outerHTML = await response.text();
+                });
+            });
+=======
+
+>>>>>>> v1
     </script>
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- Header Start -->
     <div data-component="header"></div>
     <!-- Header End -->
@@ -60,6 +76,35 @@
     <!-- Back to top Start -->
     <div data-component="backtotop"></div>
     <!-- Back to top End -->
+=======
+<!-- Header Start -->
+<div data-component="header"></div>
+<!-- Header End -->
+<!-- Hero Section Start -->
+<div data-component="hero"></div>
+<!-- Hero Section End -->
+<!-- About Section Start -->
+<div data-component="about"></div>
+<!-- About Section End -->
+<!-- Portfolio Section Start -->
+<div data-component="portfolio"></div>
+<!-- Portfolio Section End -->
+<!-- Client Section Start -->
+<div data-component="client"></div>
+<!-- Client Section End -->
+<!-- Blog Section Start -->
+<div data-component="blog"></div>
+<!-- Blog Section End -->
+<!-- Contact Section Start -->
+<div data-component="contact"></div>
+<!-- Contact Section End -->
+<!-- Footer Start -->
+<div data-component="footer"></div>
+<!-- Footer End -->
+<!-- Back to top Start -->
+<div data-component="backtotop"></div>
+<!-- Back to top End -->
+>>>>>>> v1
     <script src="assets/js/main.js"></script>
 </body>
 
