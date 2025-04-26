@@ -32,13 +32,17 @@
                         <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
                     </button>
                     <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-gray-900 dark:shadow-slate-500 lg:dark:bg-transparent">
+                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-gray-900 lg:dark:bg-transparent">
                         <ul class="block lg:flex">
-                            <li class="group">
+                            <li class="group relative">
                                 <a href="#home"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Beranda</a>
+                                    class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white">
+                                    Beranda
+                                    <span
+                                        class="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                                </a>
                             </li>
-                            <li class="group">
+                            <li class="group relative">
                                 <a href="#about"
                                     class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Tentang
                                     Saya</a>
@@ -59,20 +63,10 @@
                                 <a href="#contact"
                                     class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500 dark:text-white ">Kontak</a>
                             </li>
-                            <li class="mt-3 lg:mt-0 flex items-center pl-8">
-                                <div class="flex">
-                                    <span class="mr-2 text-sm text-slate-500">Light</span>
-                                    <input type="checkbox" id="dark-toggle" class="hidden">
-                                    <label for="dark-toggle">
-                                        <div
-                                            class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
-                                            <div
-                                                class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
-                                            </div>
-                                        </div>
-                                    </label>
-                                    <span class="ml-2 text-sm text-slate-500">Dark</span>
-                                </div>
+                            <li class="group">
+                                <button id="theme-button" class="text-base text-black py-2 mx-8 flex group-hover:text-blue-500  dark:text-white">
+                                    🌙 Dark Mode
+                                </button>
                             </li>
                         </ul>
                     </nav>

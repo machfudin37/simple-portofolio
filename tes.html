@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Underline Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'spacing': 'margin, padding',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-50">
+
+    <!-- Button dengan Underline Animasi -->
+    <div class="group relative inline-block">
+        <button
+            class="px-4 py-2 text-gray-800 text-lg font-medium transition-colors duration-300 group-hover:text-blue-500">
+            <div class="flex items-center">
+                Hover Me
+                <!-- Optional: Icon SVG -->
+                <svg class="ml-2 w-5 h-5 fill-current transition-colors duration-300 group-hover:text-blue-500"
+                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+
+            <!-- Underline Animasi -->
+            <div class="absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-500 ease-out 
+                  origin-left transform scale-x-0 group-hover:scale-x-100 w-full"></div>
+        </button>
+    </div>
+
+    <!-- Variasi Animasi Lain (Contoh Tambahan) -->
+    <div class="mt-12 grid gap-6 grid-cols-2 md:grid-cols-3">
+        <!-- Style 1: Underline dari tengah -->
+        <div class="group relative">
+            <button class="px-4 py-2 text-gray-700">
+                Center Expand
+                <div class="absolute bottom-0 left-1/2 h-0.5 bg-blue-500 transition-all duration-300 
+                    w-0 group-hover:w-full group-hover:left-0"></div>
+            </button>
+        </div>
+
+        <!-- Style 2: Underline dengan delay -->
+        <div class="group relative">
+            <button class="px-4 py-2 text-gray-700">
+                Delayed Underline
+                <div class="absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] 
+                    delay-100 scale-x-0 group-hover:scale-x-100 origin-left w-full"></div>
+            </button>
+        </div>
+
+        <!-- Style 3: Underline tebal -->
+        <div class="group relative">
+            <button class="px-4 py-2 text-gray-700 font-semibold">
+                Thick Line
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-500 transition-all duration-300 
+                    scale-x-0 group-hover:scale-x-100 origin-left w-full"></div>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>

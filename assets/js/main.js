@@ -28,24 +28,30 @@ window.addEventListener("click", function (e) {
     navMenu.classList.add("hidden");
   }
 });
-// Dark Mode Toggle
-const darkToggle = document.querySelector("#dark-toggle");
-const html = document.querySelector("html");
+// inisiasi button mode
+const themeToggle = document.getElementById("theme-button");
+const html = document.documentElement;
+// cek mode pada system
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  html.classList.add("dark");
+  themeToggle.textContent = "Light Mode";
+}
 
-darkToggle.addEventListener("click", function () {
-  if (darkToggle.checked) {
-    html.classList.add("dark");
+// button function
+themeToggle.addEventListener("click", () => {
+  html.classList.toggle("dark");
+
+  if (html.classList.contains("dark")) {
     localStorage.theme = "dark";
+    themeToggle.textContent = "☀️ Light Mode";
+    modeText.textContent = "Dark";
   } else {
-    html.classList.remove("dark");
     localStorage.theme = "light";
+    themeToggle.textContent = "🌙 Dark Mode";
+    modeText.textContent = "Light";
   }
 });
-
-// pindahkan posisi toggle sesuai Mode
-  if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      darkToggle.checked = true;
-  } else {
-      darkToggle.checked = false;
-  }
-
