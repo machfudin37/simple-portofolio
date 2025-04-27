@@ -1330,6 +1330,19 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+<<<<<<< HEAD
+=======
+.dark\:text-blue-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
+}
+
+.dark\:shadow-slate-500:is(.dark *) {
+  --tw-shadow-color: #64748b;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+>>>>>>> 20a2ae2e30694442d8e57068adb8970f09d82f16
 @media (min-width: 640px) {
   .sm\:text-4xl {
     font-size: 2.25rem;
